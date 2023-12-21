@@ -23,5 +23,5 @@ Contributions are welcome! Please follow these steps:
 3. Make your changes and commit them: `git commit -m 'Add some feature'`.
 4. Push to the branch: `git push origin feature-name`.
 5. Submit a pull request.
-6. Backend URL is [Backend](https://job-lister-backend.onrender.com)
+6. Backend URL is [Backend-repo](https://github.com/bikashd003/job-lister-backend)
 
