@@ -1,0 +1,140 @@
+.update-job-container {
+    display: flex;
+    flex-wrap: wrap;
+    font-family: "DM sans";
+
+    .left-side {
+        flex: 1 0 0;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 0 5vw;
+
+        h1 {
+            font-size: 2vw;
+            margin-bottom: 0.5vw;
+        }
+
+        h4 {
+            font-size: 1vw;
+            color: #525252;
+            margin: 0.5vw 0 1.5vw 0;
+        }
+
+        .add-job {
+            display: flex;
+            flex-direction: column;
+            gap: 1vw;
+
+            .job-details {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+
+            .type-container,
+            .description {
+                display: flex;
+                align-items: center;
+            }
+
+            h5 {
+                flex: 1 0 0;
+                text-transform: capitalize;
+                font-weight: 600;
+                font-size: 1vmax;
+            }
+
+            .job-type,
+            .remote-office,
+            .textarea {
+                flex: 1.5 0 0;
+            }
+
+            select {
+                border: 1px solid #C2C2C2;
+                width: 30%;
+                padding: 0.5vw;
+                font-size: 1vw;
+                color: #ADADAD;
+                text-align: center;
+                outline: none;
+                border-radius: 5px;
+            }
+
+
+            label {
+                text-transform: capitalize;
+                font-weight: 600;
+                font-size: 1vmax;
+
+            }
+
+            textarea {
+                border: 1px solid #C2C2C2;
+                border-radius: 5px;
+                resize: none;
+                padding: 5px;
+                width: 100%;
+                outline: none;
+                font-family: "DM sans";
+            }
+
+            input {
+                padding: 0.5vw;
+                border-radius: 5px;
+                border: 1px solid #C2C2C2;
+                outline: none;
+                font-size: 1vw;
+                width: 60%;
+            }
+
+            ::placeholder {
+                color: #ADADAD;
+                font-size: 0.9vmax;
+                font-family: "DM sans";
+            }
+
+            .buttons {
+                display: flex;
+                justify-content: flex-end;
+                gap: 1vw;
+            }
+
+            button {
+                cursor: pointer;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 15%;
+                padding: 0.5vw;
+                border-radius: 5px;
+                outline: none;
+                border: 0;
+                font-size: 0.8vw;
+                background-color: #ED5353;
+                color: #fff;
+                font-weight: 600;
+            }
+            .cancel-btn{
+                color: #ED5353;
+                background-color: transparent;
+                border: 1px solid #ED5353;
+            }
+
+        }
+    }
+
+    .right-side {
+        flex: 1 1 0;
+        height: 100vh;
+        color: #fff;
+        text-align: center;
+
+        h1 {
+            margin-top: 1vw;
+            font-size: 2vw;
+        }
+    }
+}

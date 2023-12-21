@@ -1,0 +1,157 @@
+nav {
+    display: flex;
+    justify-content: space-between;
+    padding: 1vmax 2vw;
+    background-color: #ED5353;
+    border-radius: 0 0 50px 50px;
+
+    .logo {
+        .logo-link {
+            text-decoration: none;
+            font-size: 1.2vw;
+            color: #fff;
+            font-display: "DM sans";
+            font-weight: 700;
+        }
+    }
+
+    .login-signup {
+        display: flex;
+        gap: 2em;
+
+        .login,
+        .logout {
+            cursor: pointer;
+            font-size: 0.8em;
+            letter-spacing: 1px;
+            padding: 0.5vw 0.8vw;
+            color: #fff;
+            border: 2px solid #fff;
+            outline: none;
+            border-radius: 5px;
+            font-weight: 500;
+            background-color: transparent;
+        }
+
+        .register {
+            cursor: pointer;
+            padding: 0.5vw 0.8vw;
+            color: #ED5353;
+            border: 2px solid #fff;
+            font-size: 0.8em;
+            letter-spacing: 1px;
+            font-weight: 500;
+            border-radius: 5px;
+            outline: none;
+            background-color: #fff;
+        }
+    }
+}
+
+.main {
+    overflow-x: hidden;
+    background-color: #FFEFEF;
+    height: 100vh;
+    font-family: "DM sans";
+
+    .main-job-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 2em;
+
+        .job-heading {
+            margin-top: -20px;
+            text-align: center;
+            width: 50%;
+            background-color: #fff;
+            padding: 1vmax 2vmax;
+
+            h3 {
+                font-size: 1vw;
+            }
+        }
+
+        .job-description {
+            background-color: #fff;
+            padding: 1vmax 2vmax;
+            width: 50%;
+            display: flex;
+            flex-direction: column;
+            gap: 0.3vw;
+
+            .createdAt-type {
+                display: flex;
+
+                p {
+                    color: #999999;
+                }
+            }
+
+            p {
+                color: #595959;
+            }
+
+            .location {
+                margin-top: -1em;
+                margin-bottom: 1em;
+                color: #ED5353;
+            }
+
+            h1 {
+                font-size: 1.2vmax;
+                margin-bottom: 0.6em;
+            }
+
+            .salary {
+                color: #999999;
+                display: flex;
+                font-size: vw;
+                align-items: center;
+                gap: 3px;
+            }
+
+            .position {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+
+                h1 {
+                    font-size: 2vmax;
+                }
+
+                .edit-job {
+                    padding: 0.5vw 1vw;
+                    border-radius: 5px;
+                    outline: none;
+                    border: 0;
+                    font-size: 0.8vmax;
+                    background-color: #ED5353;
+                    color: #fff;
+                    font-weight: 700;
+                    margin: 0.8vw 0 0.5vw 0;
+                }
+            }
+
+            .money {
+                margin-bottom: 1em;
+
+            }
+
+            .skill-required {
+                .skills {
+                    display: flex;
+                    gap: 1em;
+
+                    h1 {
+                        background-color: #FFEEEE;
+                        font-size: 1.2vw;
+                        font-weight: 400;
+                        padding: 5px 15px;
+                        border-radius: 100px;
+                    }
+                }
+            }
+        }
+    }
+}

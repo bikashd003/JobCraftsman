@@ -1,0 +1,132 @@
+nav {
+  display: flex;
+  justify-content: space-between;
+  padding: 1vmax 2vw;
+  background-color: #ED5353;
+  border-radius: 0 0 50px 50px;
+}
+nav .logo .logo-link {
+  text-decoration: none;
+  font-size: 1.2vw;
+  color: #fff;
+  font-display: "DM sans";
+  font-weight: 700;
+}
+nav .login-signup {
+  display: flex;
+  gap: 2em;
+}
+nav .login-signup .login,
+nav .login-signup .logout {
+  cursor: pointer;
+  font-size: 0.8em;
+  letter-spacing: 1px;
+  padding: 0.5vw 0.8vw;
+  color: #fff;
+  border: 2px solid #fff;
+  outline: none;
+  border-radius: 5px;
+  font-weight: 500;
+  background-color: transparent;
+}
+nav .login-signup .register {
+  cursor: pointer;
+  padding: 0.5vw 0.8vw;
+  color: #ED5353;
+  border: 2px solid #fff;
+  font-size: 0.8em;
+  letter-spacing: 1px;
+  font-weight: 500;
+  border-radius: 5px;
+  outline: none;
+  background-color: #fff;
+}
+
+.main {
+  overflow-x: hidden;
+  background-color: #FFEFEF;
+  height: 100vh;
+  font-family: "DM sans";
+}
+.main .main-job-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2em;
+}
+.main .main-job-container .job-heading {
+  margin-top: -20px;
+  text-align: center;
+  width: 50%;
+  background-color: #fff;
+  padding: 1vmax 2vmax;
+}
+.main .main-job-container .job-heading h3 {
+  font-size: 1vw;
+}
+.main .main-job-container .job-description {
+  background-color: #fff;
+  padding: 1vmax 2vmax;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3vw;
+}
+.main .main-job-container .job-description .createdAt-type {
+  display: flex;
+}
+.main .main-job-container .job-description .createdAt-type p {
+  color: #999999;
+}
+.main .main-job-container .job-description p {
+  color: #595959;
+}
+.main .main-job-container .job-description .location {
+  margin-top: -1em;
+  margin-bottom: 1em;
+  color: #ED5353;
+}
+.main .main-job-container .job-description h1 {
+  font-size: 1.2vmax;
+  margin-bottom: 0.6em;
+}
+.main .main-job-container .job-description .salary {
+  color: #999999;
+  display: flex;
+  font-size: vw;
+  align-items: center;
+  gap: 3px;
+}
+.main .main-job-container .job-description .position {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.main .main-job-container .job-description .position h1 {
+  font-size: 2vmax;
+}
+.main .main-job-container .job-description .position .edit-job {
+  padding: 0.5vw 1vw;
+  border-radius: 5px;
+  outline: none;
+  border: 0;
+  font-size: 0.8vmax;
+  background-color: #ED5353;
+  color: #fff;
+  font-weight: 700;
+  margin: 0.8vw 0 0.5vw 0;
+}
+.main .main-job-container .job-description .money {
+  margin-bottom: 1em;
+}
+.main .main-job-container .job-description .skill-required .skills {
+  display: flex;
+  gap: 1em;
+}
+.main .main-job-container .job-description .skill-required .skills h1 {
+  background-color: #FFEEEE;
+  font-size: 1.2vw;
+  font-weight: 400;
+  padding: 5px 15px;
+  border-radius: 100px;
+}/*# sourceMappingURL=Viewjob.css.map */
