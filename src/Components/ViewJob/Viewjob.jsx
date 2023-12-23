@@ -3,15 +3,23 @@ import Navbar from "./Navbar";
 import "./Viewjob.css";
 import { PiMoneyFill } from "react-icons/pi";
 import axios from "axios";
-import { useParams,Link } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import moment from "moment";
-import {API} from "../../Services/Api.js"
-
+import { API } from "../../Services/Api.js";
 
 const Viewjob = () => {
-  const [isloggedIn, seIsloggedIn] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [token, setToken] = useState(localStorage.getItem("token"));
   const [jobDetails, setJobDetails] = useState("");
   const { jobId } = useParams();
+  useEffect(() => {
+    if (token) {
+      setIsLoggedIn(true);
+    }
+    if (!token) {
+      setIsLoggedIn(false);
+    }
+  }, [token]);
   useEffect(() => {
     axios
       .get(`${API}/get-job/${jobId}`)
@@ -21,23 +29,16 @@ const Viewjob = () => {
       .catch((err) => {
         console.log(err);
       });
-
-    const token = localStorage.getItem("token");
-    const recruiter = localStorage.getItem("recruiterName");
-    if (token && recruiter) {
-      seIsloggedIn(true);
-    }
   }, []);
   const createdAt = new Date(jobDetails.createdAt);
-  const daysDifference =  moment(createdAt, "YYYYMMDD").fromNow();
-  
+  const daysDifference = moment(createdAt, "YYYYMMDD").fromNow();
 
   return (
     <>
       <div className="main">
-        <Navbar />
+        <Navbar isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
         {jobDetails ? (
-          <div className="main-job-container" >
+          <div className="main-job-container">
             <div className="job-heading">
               <h3>
                 {jobDetails.job.position} at {jobDetails.company.name}
@@ -50,10 +51,13 @@ const Viewjob = () => {
               </div>
               <div className="position">
                 <h1>{jobDetails.job.position}</h1>
-                {isloggedIn ? (
+                {isLoggedIn ? (
                   <Link to={`/update-job/${jobDetails._id}`}>
                     <button className="edit-job">Edit job</button>
-                  </Link>) :""}
+                  </Link>
+                ) : (
+                  ""
+                )}
               </div>
               <div className="location">{jobDetails.job.location}</div>
               <div className="salary">

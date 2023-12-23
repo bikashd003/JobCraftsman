@@ -1,12 +1,44 @@
 nav {
     display: flex;
     justify-content: space-between;
-    padding: 1vmax 2vw;
+    padding: 1.5vmax 4vw;
     background-color: #ED5353;
     border-radius: 0 0 50px 50px;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
 
+    .rectangle1 {
+        z-index: -1;
+        width: 15vmax;
+        height: auto;
+        left: 0;
+        bottom: 0;
+        position: absolute;
+
+    }
+
+    .rectangle2 {
+        z-index: -1;
+        position: absolute;
+        width: 25vmax;
+        height: auto;
+        top: 10%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    .rectangle3{
+        z-index: -1;
+        position: absolute;
+        width: 20vmax;
+        height: 5.5vmax;
+        right: 4%;
+        top: 0;
+    }
     .logo {
         .logo-link {
+            z-index: 10;
             text-decoration: none;
             font-size: 1.2vw;
             color: #fff;
@@ -53,14 +85,15 @@ nav {
     background-color: #FFEFEF;
     height: 100vh;
     font-family: "DM sans";
-
+    
     .main-job-container {
         display: flex;
         flex-direction: column;
         align-items: center;
         gap: 2em;
-
+        
         .job-heading {
+            z-index: 999;
             margin-top: -20px;
             text-align: center;
             width: 50%;

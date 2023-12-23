@@ -2,6 +2,9 @@ import React, { useState, useEffect } from "react";
 import "./Viewjob.css";
 import { useNavigate } from "react-router-dom";
 import {Link} from 'react-router-dom';
+import Rectangle1 from "../../assets/Rectangle1.png"
+import Rectangle2 from "../../assets/Rectangle2.png"
+import Rectangle3 from "../../assets/Rectangle3.png"
 
 const Navbar = ({isLoggedIn,setIsLoggedIn }) => {
   const navigate = useNavigate();
@@ -9,7 +12,7 @@ const Navbar = ({isLoggedIn,setIsLoggedIn }) => {
   const [token, setToken] = useState(localStorage.getItem("token"));
 
   useEffect(() => {
-    const recruiterName = localStorage.getItem("recruiterName");
+    const recruiterName = localStorage.getItem("logged_user");
 
     if (token && recruiterName) {
       setUserName(recruiterName);
@@ -19,7 +22,7 @@ const Navbar = ({isLoggedIn,setIsLoggedIn }) => {
 
   const handleLogout = () => {
     localStorage.removeItem("token");
-    localStorage.removeItem("recruiterName");
+    localStorage.removeItem("logged_user");
     setUserName("");
     setIsLoggedIn(false);
     setToken("");
@@ -36,6 +39,9 @@ const Navbar = ({isLoggedIn,setIsLoggedIn }) => {
   return (
     <>
       <nav>
+<img src={Rectangle1} alt="" className="rectangle1"/>
+<img src={Rectangle2} alt="" className="rectangle2"/>
+<img src={Rectangle3} alt="" className="rectangle3"/>
         <div className="logo">
           <Link to="/"className="logo-link">Jobfinder</Link>
         </div>
@@ -45,7 +51,7 @@ const Navbar = ({isLoggedIn,setIsLoggedIn }) => {
               <button className="logout" onClick={handleLogout}>
                 Logout
               </button>
-              <span>Hello! {userName}!</span>
+              <span>Hello! {userName}</span>
             </>
           ) : (
             <>

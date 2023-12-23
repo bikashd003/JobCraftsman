@@ -3,22 +3,32 @@ import "./Home.css";
 import Navbar from "../ViewJob/Navbar";
 import { IoSearch } from "react-icons/io5";
 import { TbCurrencyRupee } from "react-icons/tb";
-import { Link } from "react-router-dom";
+import { Await, Link } from "react-router-dom";
 import { RxCross1 } from "react-icons/rx";
 import { LuPlus } from "react-icons/lu";
 import axios from "axios";
-import {API} from "../../Services/Api.js"
+import { API } from "../../Services/Api.js";
 
 const Home = () => {
   const [job, setJob] = useState([]);
+  const [error, setError] = useState(false);
   const [search, setSearch] = useState("");
   const [filter, setFilter] = useState("");
   const [filterValues, setFilterValues] = useState([]);
   const [searchValues, setSearchValues] = useState([]);
-
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [token, setToken] = useState(localStorage.getItem("token"));
-
+  const getJob = async () => {
+    await axios
+      .get(`${API}/get-jobs`)
+      .then((res) => {
+        setJob(res.data.jobs);
+      })
+      .catch((err) => {
+        console.log(err);
+        setError(true);
+      });
+  };
   useEffect(() => {
     if (token) {
       setIsLoggedIn(true);
@@ -26,32 +36,31 @@ const Home = () => {
     if (!token) {
       setIsLoggedIn(false);
     }
-    axios
-      .get(`${API}/get-jobs`)
-      .then((res) => {
-        setJob(res.data.jobs);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    getJob();
   }, [token]);
 
-  const handleSearch = (e) => {
+  const handleSearch = async (e) => {
     try {
       if (e) {
         e.preventDefault();
       }
-
+      if (filter && !filterValues.includes(filter)) {
+        setFilterValues((prev) => [...prev, filter]);
+      }
+      console.log(filter);
+      console.log(filterValues);
       let apiUrl = `${API}/get-jobs?`;
 
       if (search) {
         apiUrl += `position=${search}&`;
       }
 
-      if (filter) {
-        apiUrl += `skillsRequired=${filter}&`;
+      if (filterValues.length > 0) {
+        apiUrl += `skills=${filterValues}&`;
+        console.log(apiUrl);
       }
-      axios
+
+      await axios
         .get(apiUrl)
         .then((response) => {
           const jobs = response.data.jobs;
@@ -68,20 +77,27 @@ const Home = () => {
     } catch (err) {
       console.error("Error fetching jobs:", err);
     }
-    if (filter && !filterValues.includes(filter)) {
-      setFilterValues((prev) => [...prev, filter]);
-    }
 
     if (search && !searchValues.includes(search)) {
       setSearchValues((prev) => [...prev, search]);
     }
   };
 
+  useEffect(() => {
+    if (filter) {
+      handleSearch();
+    }
+  }, [filter, filterValues]);
+
   const handleClear = (type, index) => {
     if (type === "filter") {
       setFilterValues((prev) => prev.filter((_, i) => i !== index));
+      setFilter("");
     } else if (type === "search") {
       setSearchValues((prev) => prev.filter((_, i) => i !== index));
+    }
+    if (filter) {
+      getJob();
     }
   };
 
@@ -89,12 +105,8 @@ const Home = () => {
     setFilter("");
     setSearch("");
     setFilterValues([]);
+    getJob();
   };
-  useEffect(() => {
-    if (filter) {
-      handleSearch();
-    }
-  }, [filter]);
   return (
     <>
       <div className="main">
@@ -125,7 +137,8 @@ const Home = () => {
                 <option value="JavaScript">JavaScript</option>
                 <option value="React.js">React.js</option>
                 <option value="Node">Node</option>
-                <option value="java">Java</option>
+                <option value="Java">Java</option>
+                <option value="Python">Python</option>
               </select>
             </div>
             {filterValues.length > 0
@@ -159,9 +172,11 @@ const Home = () => {
               </Link>
             )}
           </div>
-          <h4 className="clear-btn" onClick={handleAllClear}>
-            clear
-          </h4>
+          {(filterValues.length > 0 || searchValues.length > 0) && (
+            <h4 className="clear-btn" onClick={handleAllClear}>
+              clear
+            </h4>
+          )}
         </div>
         <div className="job-container-wraper">
           {job.length > 0 ? (
@@ -212,6 +227,8 @@ const Home = () => {
                 </div>
               );
             })
+          ) : error ? (
+            <h1>No job available</h1>
           ) : (
             <h1>Loading</h1>
           )}

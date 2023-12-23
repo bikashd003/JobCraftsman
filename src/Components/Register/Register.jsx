@@ -4,6 +4,8 @@ import './Register.css'
 import frontImg from "../../assets/front.png";
 import { Link,useNavigate } from "react-router-dom";
 import {API} from "../../Services/Api.js"
+import { ToastContainer, toast } from "react-toastify";
+
 
 const Register = () => {
   const [recruiter, setRecruiter] = useState({
@@ -13,16 +15,19 @@ const Register = () => {
     mobile: "",
   });
   const navigate = useNavigate();
-  const handleSubmit = (e) => {
+  const handleSubmit =async (e) => {
     e.preventDefault();
-    axios.post(`${API}/register`,{
+    if(recruiter.email==="" || recruiter.password===""|| recruiter.name===""|| recruiter.mobile===""){
+      toast("Please fill all the credentials")
+    }
+  await  axios.post(`${API}/register`,{
       name: recruiter.name,
       email: recruiter.email,
       password: recruiter.password,
       mobile: recruiter.mobile,
     })
     .then((response) => {
-      console.log("Data sent successfully:", response.data);
+      // console.log("Data sent successfully:", response.data);
       if(response.data.token){
         localStorage.setItem("token", response.data.token)
         localStorage.setItem("logged_user", response.data.recruiterName)
@@ -30,7 +35,9 @@ const Register = () => {
       }
     })
     .catch((error) => {
-      console.error("Error sending data:", error);
+    if(error.error=="Email already exist" ){
+      toast("Email already exist")
+    };
     })
   };
 
@@ -71,7 +78,7 @@ const Register = () => {
               onChange={(e) => setRecruiter({...recruiter,password:e.target.value})}
 
             />
-            
+            <ToastContainer />
             <button type="submit">Create Account</button>
           </form>
           <p>

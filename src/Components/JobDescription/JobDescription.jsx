@@ -6,17 +6,18 @@ import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useParams, useNavigate } from "react-router-dom";
-import {API} from "../../Services/Api.js"
+import { API } from "../../Services/Api.js";
 
 const JobDescription = () => {
   const { jobId } = useParams();
   const navigate = useNavigate();
+  const [error, setError] = useState(false);
   const [jobDetails, setJobDetails] = useState(null);
   const token = localStorage.getItem("token");
   const headers = {
     token: token,
   };
-  const updateJobDetails=()=>{
+  const updateJobDetails = () => {
     if (jobDetails) {
       setJob((prevJob) => ({
         ...prevJob,
@@ -33,7 +34,7 @@ const JobDescription = () => {
         additionalInformation: jobDetails?.job?.additionalInformation || "",
       }));
     }
-  }
+  };
   useEffect(() => {
     axios
       .get(`${API}/get-job/${jobId}`)
@@ -43,11 +44,16 @@ const JobDescription = () => {
       .catch((error) => {
         console.log(error);
       });
-      updateJobDetails();
+    updateJobDetails();
   }, []);
-  useEffect(()=>{
-updateJobDetails();
-  },[jobDetails])
+  useEffect(() => {
+    if (error) {
+      localStorage.removeItem("token");
+      localStorage.removeItem("logged_user");
+    }
+
+    updateJobDetails();
+  }, [jobDetails, error]);
   const [job, setJob] = useState({
     companyName: "",
     logoURL: "",
@@ -63,14 +69,22 @@ updateJobDetails();
   });
   const handleSubmit = (event) => {
     if (
-      job.companyName === "" || job.logoURL === "" || job.about === "" || job.position === "" ||
-      job.type === "" || job.location === "" || job.remoteOrOffice === "" || job.salary === "" ||
-      job.description === "" || job.skillsRequired === "" || job.additionalInformation === ""
+      job.companyName === "" ||
+      job.logoURL === "" ||
+      job.about === "" ||
+      job.position === "" ||
+      job.type === "" ||
+      job.location === "" ||
+      job.remoteOrOffice === "" ||
+      job.salary === "" ||
+      job.description === "" ||
+      job.skillsRequired === "" ||
+      job.additionalInformation === ""
     ) {
       toast("All field is required");
     }
     event.preventDefault();
-   
+
     axios
       .post(
         `${API}/create-job`,
@@ -97,11 +111,14 @@ updateJobDetails();
       )
 
       .then(() => {
-        navigate("/");
         toast("Job add successfully");
       })
       .catch((error) => {
-        console.error("Error sending data:", error);
+        const { message } = error.message;
+        if (message === "unauthorized") {
+          error(true);
+          toast("Please login agian");
+        }
       });
   };
   const handleCancel = () => {
@@ -109,42 +126,49 @@ updateJobDetails();
   };
   const handleUpdate = (e) => {
     e.preventDefault();
-    axios.put(`${API}/update-job/${jobId}`,
-    {
-      company: {
-        name: job.companyName,
-        logoURL: job.logoURL,
-        about: job.about,
-      },
-      job: {
-        position: job.position,
-        type: job.type,
-        location: job.location,
-        remoteOrOffice: job.remoteOrOffice,
-        salary: job.salary,
-        description: job.description,
-        skillsRequired: job.skillsRequired,
-        additionalInformation: job.additionalInformation,
-      },
-    },
-    {
-      headers: headers,
-    })
-    .then(() => {
-      toast("Job updated successfully");
-      navigate("/");
-  })
-    .catch((error) => {
-      toast("Error sending data:");
-    })
-  }
-  //which jobs are created which person only that person can edit that perticular job
+    axios
+      .put(
+        `${API}/update-job/${jobId}`,
+        {
+          company: {
+            name: job.companyName,
+            logoURL: job.logoURL,
+            about: job.about,
+          },
+          job: {
+            position: job.position,
+            type: job.type,
+            location: job.location,
+            remoteOrOffice: job.remoteOrOffice,
+            salary: job.salary,
+            description: job.description,
+            skillsRequired: job.skillsRequired,
+            additionalInformation: job.additionalInformation,
+          },
+        },
+        {
+          headers: headers,
+        }
+      )
+      .then(() => {
+        toast("Job updated successfully");
+        navigate("/");
+      })
+      .catch((error) => {
+        const { message } = error.message;
+        if (message === "unauthorized") {
+          error(true);
+          toast("Please login agian");
+          navigate("/login");
+        }
+      });
+  };
   return (
     <>
       <div className="update-job-container">
         <div className="left-side">
           <h1>Add job description</h1>
-          <form className="add-job" >
+          <form className="add-job">
             <div className="job-details">
               <label htmlFor="company-name">Company Name </label>
               <input
@@ -282,12 +306,16 @@ updateJobDetails();
               />
             </div>
             <div className="buttons">
-                <button onClick={handleCancel} className="cancel-btn">Cancel</button>
-             {jobId ? (  <button onClick={handleUpdate}>
-                Update Job
-              </button>):( <button type="submit" onClick={handleSubmit}>
-                <LuPlus /> Add Job
-              </button>)}
+              <button onClick={handleCancel} className="cancel-btn">
+                Cancel
+              </button>
+              {jobId ? (
+                <button onClick={handleUpdate}>Update Job</button>
+              ) : (
+                <button type="submit" onClick={handleSubmit}>
+                  <LuPlus /> Add Job
+                </button>
+              )}
               <ToastContainer position="top-left" />
             </div>
           </form>
