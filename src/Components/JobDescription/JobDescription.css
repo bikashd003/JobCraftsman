@@ -3,6 +3,11 @@
   flex-wrap: wrap;
   font-family: "DM sans";
 }
+@media (max-width: 768px) {
+  .update-job-container {
+    flex-direction: column;
+  }
+}
 .update-job-container .left-side {
   flex: 1 0 0;
   height: 100vh;
@@ -12,13 +17,23 @@
   padding: 0 5vw;
 }
 .update-job-container .left-side h1 {
-  font-size: 2vw;
-  margin-bottom: 0.5vw;
+  font-size: 3vw;
+  margin-bottom: 1vw;
+}
+@media (max-width: 768px) {
+  .update-job-container .left-side h1 {
+    font-size: 4vw;
+  }
 }
 .update-job-container .left-side h4 {
-  font-size: 1vw;
+  font-size: 1.5vw;
   color: #525252;
-  margin: 0.5vw 0 1.5vw 0;
+  margin: 1vw 0 2vw 0;
+}
+@media (max-width: 768px) {
+  .update-job-container .left-side h4 {
+    font-size: 2vw;
+  }
 }
 .update-job-container .left-side .add-job {
   display: flex;
@@ -39,27 +54,43 @@
   flex: 1 0 0;
   text-transform: capitalize;
   font-weight: 600;
-  font-size: 1vmax;
+  font-size: 1.5vmax;
+}
+@media (max-width: 768px) {
+  .update-job-container .left-side .add-job h5 {
+    font-size: 1.8vmax;
+  }
 }
 .update-job-container .left-side .add-job .job-type,
 .update-job-container .left-side .add-job .remote-office,
 .update-job-container .left-side .add-job .textarea {
+  font-family: "DM sans";
   flex: 1.5 0 0;
 }
 .update-job-container .left-side .add-job select {
   border: 1px solid #C2C2C2;
-  width: 30%;
-  padding: 0.5vw;
-  font-size: 1vw;
+  width: 40%;
+  padding: 1vw;
+  font-size: 1.2vw;
   color: #ADADAD;
   text-align: center;
   outline: none;
   border-radius: 5px;
 }
+@media (max-width: 768px) {
+  .update-job-container .left-side .add-job select {
+    font-size: 3vw;
+  }
+}
 .update-job-container .left-side .add-job label {
   text-transform: capitalize;
   font-weight: 600;
-  font-size: 1vmax;
+  font-size: 1.5vmax;
+}
+@media (max-width: 768px) {
+  .update-job-container .left-side .add-job label {
+    font-size: 1.8vmax;
+  }
 }
 .update-job-container .left-side .add-job textarea {
   border: 1px solid #C2C2C2;
@@ -69,24 +100,44 @@
   width: 100%;
   outline: none;
   font-family: "DM sans";
+  font-size: 1.2vw;
+}
+@media (max-width: 768px) {
+  .update-job-container .left-side .add-job textarea {
+    font-size: 1.5vw;
+  }
 }
 .update-job-container .left-side .add-job input {
-  padding: 0.5vw;
+  padding: 1vw;
   border-radius: 5px;
   border: 1px solid #C2C2C2;
   outline: none;
-  font-size: 1vw;
+  font-size: 1.2vw;
   width: 60%;
+}
+@media (max-width: 768px) {
+  .update-job-container .left-side .add-job input {
+    width: 60%;
+    font-size: 3vw;
+  }
 }
 .update-job-container .left-side .add-job ::-moz-placeholder {
   color: #ADADAD;
-  font-size: 0.9vmax;
+  font-size: 1vmax;
   font-family: "DM sans";
 }
 .update-job-container .left-side .add-job ::placeholder {
   color: #ADADAD;
-  font-size: 0.9vmax;
+  font-size: 1vmax;
   font-family: "DM sans";
+}
+@media (max-width: 768px) {
+  .update-job-container .left-side .add-job ::-moz-placeholder {
+    font-size: 1.2vmax;
+  }
+  .update-job-container .left-side .add-job ::placeholder {
+    font-size: 1.2vmax;
+  }
 }
 .update-job-container .left-side .add-job .buttons {
   display: flex;
@@ -98,20 +149,31 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 15%;
-  padding: 0.5vw;
+  width: 20%;
+  padding: 1vw;
   border-radius: 5px;
   outline: none;
   border: 0;
-  font-size: 0.8vw;
+  font-size: 1.2vw;
   background-color: #ED5353;
   color: #fff;
   font-weight: 600;
+}
+@media (max-width: 768px) {
+  .update-job-container .left-side .add-job button {
+    font-size: 2.8vw;
+  }
 }
 .update-job-container .left-side .add-job .cancel-btn {
   color: #C2C2C2;
   background-color: transparent;
   border: 2px solid #C2C2C2;
+  font-size: 1.2vw;
+}
+@media (max-width: 768px) {
+  .update-job-container .left-side .add-job .cancel-btn {
+    font-size: 2.8vw;
+  }
 }
 .update-job-container .right-side {
   flex: 1 1 0;
@@ -121,5 +183,17 @@
 }
 .update-job-container .right-side h1 {
   margin-top: 1vw;
-  font-size: 2vw;
+  font-size: 3vw;
+}
+@media (max-width: 768px) {
+  .update-job-container .right-side h1 {
+    margin-top: 2vw;
+    font-size: 4vw;
+  }
+}
+@media (max-width: 768px) {
+  .update-job-container .right-side {
+    order: -1;
+    height: auto;
+  }
 }/*# sourceMappingURL=JobDescription.css.map */

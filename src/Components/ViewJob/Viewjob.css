@@ -41,9 +41,20 @@ nav .logo .logo-link {
   font-display: "DM sans";
   font-weight: 700;
 }
+@media (max-width: 576px) {
+  nav .logo .logo-link {
+    font-size: 3vw;
+  }
+}
 nav .login-signup {
   display: flex;
   gap: 2em;
+}
+@media (max-width: 576px) {
+  nav .login-signup .user-name {
+    font-size: 1.8vmax;
+    color: #fff;
+  }
 }
 nav .login-signup .login,
 nav .login-signup .logout {
@@ -81,7 +92,7 @@ nav .login-signup .register {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 2em;
+  gap: 1.5em;
 }
 .main .main-job-container .job-heading {
   z-index: 999;
@@ -93,6 +104,16 @@ nav .login-signup .register {
 }
 .main .main-job-container .job-heading h3 {
   font-size: 1vw;
+}
+@media (max-width: 576px) {
+  .main .main-job-container .job-heading {
+    margin-top: -5px;
+    width: 80%;
+    padding: 0.5vmax 1vmax;
+  }
+  .main .main-job-container .job-heading h3 {
+    font-size: 2.5vw;
+  }
 }
 .main .main-job-container .job-description {
   background-color: #fff;
@@ -107,9 +128,11 @@ nav .login-signup .register {
 }
 .main .main-job-container .job-description .createdAt-type p {
   color: #999999;
+  font-size: 1vw;
 }
 .main .main-job-container .job-description p {
   color: #595959;
+  font-size: 1vw;
 }
 .main .main-job-container .job-description .location {
   margin-top: -1em;
@@ -123,7 +146,7 @@ nav .login-signup .register {
 .main .main-job-container .job-description .salary {
   color: #999999;
   display: flex;
-  font-size: vw;
+  font-size: 1vw;
   align-items: center;
   gap: 3px;
 }
@@ -146,6 +169,11 @@ nav .login-signup .register {
   font-weight: 700;
   margin: 0.8vw 0 0.5vw 0;
 }
+@media (max-width: 576px) {
+  .main .main-job-container .job-description .position .edit-job {
+    font-size: 2.8vw;
+  }
+}
 .main .main-job-container .job-description .money {
   margin-bottom: 1em;
 }
@@ -159,4 +187,36 @@ nav .login-signup .register {
   font-weight: 400;
   padding: 5px 15px;
   border-radius: 100px;
+}
+@media (max-width: 576px) {
+  .main .main-job-container .job-description {
+    width: 80%;
+  }
+  .main .main-job-container .job-description .createdAt-type p {
+    font-size: 3vw;
+  }
+  .main .main-job-container .job-description p {
+    font-size: 3vw;
+  }
+  .main .main-job-container .job-description h1 {
+    font-size: 3vw;
+  }
+  .main .main-job-container .job-description .location {
+    margin-top: -0.5em;
+    font-size: 3vw;
+  }
+  .main .main-job-container .job-description .salary {
+    font-size: 3vw;
+  }
+  .main .main-job-container .job-description .position h1 {
+    font-size: 3.5vw;
+  }
+  .main .main-job-container .job-description .skill-required .skills {
+    gap: 0.5em;
+  }
+  .main .main-job-container .job-description .skill-required .skills h1 {
+    font-size: 2.5vw;
+    font-weight: 500;
+    padding: 2px 5px;
+  }
 }/*# sourceMappingURL=Viewjob.css.map */

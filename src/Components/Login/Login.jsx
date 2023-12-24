@@ -29,7 +29,6 @@ const Login = () => {
         localStorage.setItem("logged_user", response.data.recruiterName);
         setEmail("");
         setPassword("");
-        toast("Login successfully")
         navigate("/");
       })
       .catch((error) => {

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import './Register.css'
+import "../Login/Login.css"
 import frontImg from "../../assets/front.png";
 import { Link,useNavigate } from "react-router-dom";
 import {API} from "../../Services/Api.js"
@@ -83,7 +83,7 @@ const Register = () => {
           </form>
           <p>
             Already have an account?
-            <Link to="/" className="sign-up-link">
+            <Link to="/login" className="sign-up-link">
              Sign In
             </Link>
           </p>

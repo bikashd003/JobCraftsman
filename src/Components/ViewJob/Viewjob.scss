@@ -28,7 +28,7 @@ nav {
         transform: translate(-50%, -50%);
     }
 
-    .rectangle3{
+    .rectangle3 {
         z-index: -1;
         position: absolute;
         width: 20vmax;
@@ -36,6 +36,7 @@ nav {
         right: 4%;
         top: 0;
     }
+
     .logo {
         .logo-link {
             z-index: 10;
@@ -44,12 +45,22 @@ nav {
             color: #fff;
             font-display: "DM sans";
             font-weight: 700;
+
+            @media (max-width: 576px) {
+                font-size: 3vw;
+            }
         }
     }
 
     .login-signup {
         display: flex;
         gap: 2em;
+        @media (max-width: 576px) {
+            .user-name{
+                font-size: 1.8vmax;
+                color: #fff;
+            }
+        }
 
         .login,
         .logout {
@@ -85,13 +96,13 @@ nav {
     background-color: #FFEFEF;
     height: 100vh;
     font-family: "DM sans";
-    
+
     .main-job-container {
         display: flex;
         flex-direction: column;
         align-items: center;
-        gap: 2em;
-        
+        gap: 1.5em;
+
         .job-heading {
             z-index: 999;
             margin-top: -20px;
@@ -103,6 +114,16 @@ nav {
             h3 {
                 font-size: 1vw;
             }
+
+            @media (max-width: 576px) {
+                margin-top: -5px;
+                width: 80%;
+                padding: 0.5vmax 1vmax;
+
+                h3 {
+                    font-size: 2.5vw;
+                }
+            }
         }
 
         .job-description {
@@ -112,19 +133,22 @@ nav {
             display: flex;
             flex-direction: column;
             gap: 0.3vw;
-
             .createdAt-type {
                 display: flex;
-
+                
                 p {
                     color: #999999;
+                    font-size: 1vw;
                 }
             }
-
+            
             p {
                 color: #595959;
-            }
+                font-size: 1vw;
 
+            }
+            
+         
             .location {
                 margin-top: -1em;
                 margin-bottom: 1em;
@@ -135,15 +159,15 @@ nav {
                 font-size: 1.2vmax;
                 margin-bottom: 0.6em;
             }
-
+         
             .salary {
                 color: #999999;
                 display: flex;
-                font-size: vw;
+                font-size: 1vw;
                 align-items: center;
                 gap: 3px;
             }
-
+  
             .position {
                 display: flex;
                 justify-content: space-between;
@@ -163,9 +187,13 @@ nav {
                     color: #fff;
                     font-weight: 700;
                     margin: 0.8vw 0 0.5vw 0;
+                    @media (max-width: 576px){
+                    font-size: 2.8vw;
+
+                    }
                 }
             }
-
+       
             .money {
                 margin-bottom: 1em;
 
@@ -184,6 +212,42 @@ nav {
                         border-radius: 100px;
                     }
                 }
+            }
+            @media (max-width: 576px){
+                width: 80%;
+                .createdAt-type{
+                    p{
+                        font-size: 3vw;
+                    }
+                }
+                p{
+                    font-size: 3vw;
+                }
+                h1{
+                    font-size: 3vw;
+                }
+                .location{
+                    margin-top: -0.5em;
+                    font-size: 3vw;
+                }
+               .salary{
+                font-size: 3vw;
+               }
+               .position{
+                h1{
+                    font-size: 3.5vw;
+                }
+               }
+               .skill-required {
+                .skills {
+                    gap: 0.5em;
+                    h1 {
+                        font-size: 2.5vw;
+                        font-weight: 500;
+                        padding: 2px 5px;
+                    }
+                }
+            }
             }
         }
     }

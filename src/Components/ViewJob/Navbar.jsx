@@ -51,7 +51,7 @@ const Navbar = ({isLoggedIn,setIsLoggedIn }) => {
               <button className="logout" onClick={handleLogout}>
                 Logout
               </button>
-              <span>Hello! {userName}</span>
+              <span className="user-name">Hello! {userName}</span>
             </>
           ) : (
             <>
